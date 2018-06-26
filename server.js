@@ -2,6 +2,7 @@
 
 // dependencies
 const express = require('express');
+const mongoose = require('mongoose');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const path = require('path');
@@ -22,29 +23,32 @@ app.get('/:name', (req, res) => {
   const { name } = req.params;
 
   // check db for file
-
-  // if it doesn't exist
-
-  // scrape data
-  axios.get(`https://codepen.io/pen/${name}`)
-  .then(data => {
-    const $ = cheerio.load(data.data);
-    const code = $('#box-css code').text().trim();
-
-    db.Snippet.create({
-      name: name,
-      code: code
-    })
-
-    res.setHeader('content-type', 'text/css');
-    res.end(code);
+  db.Snippet.findOne({
+    name: name
   })
+  .then(snippet => {
+    if (snippet) {
+      res.setHeader('content-type', 'text/css');
+      res.end(snippet.code);
+    } else {
+      // scrape data
+      console.log('scraping!')
+      axios.get(`https://codepen.io/pen/${name}`)
+      .then(data => {
+        const $ = cheerio.load(data.data);
+        const code = $('#box-css code').text().trim();
 
-  // write file
-  //fs.writeFileSync(file.path, 'styles')
-
-  // send file
-  //res.sendFile(path.join(__dirname, file.path))
+        db.Snippet.create({
+          name: name,
+          code: code
+        })
+        .then(snippet => {
+          res.setHeader('content-type', 'text/css');
+          res.end(snippet.code);
+        })
+      })
+    }
+  })
 })
 
 // start server
