@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const snippetSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   code: {
     type: String,
@@ -13,7 +12,8 @@ const snippetSchema = new Schema({
   },
   language: {
     type: String,
-    default: 'css'
+    required: true,
+    enum: ['css', 'javascript']
   },
   createdAt: {
     type: Date,
