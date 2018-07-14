@@ -6,6 +6,10 @@ body {
   font-size: 13px;
 }
 
+#code-link {
+  border-color: black;
+}
+
 .modal-dialog {
   position: absolute;
   top: 40%;

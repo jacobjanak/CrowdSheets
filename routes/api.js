@@ -17,9 +17,6 @@ router.get('/:name.js', (req, res) => {
     res.setHeader('content-type', 'application/javascript')
     res.end(code)
   })
-  .catch(err => {
-    res.json(err)
-  })
 })
 
 module.exports = router;

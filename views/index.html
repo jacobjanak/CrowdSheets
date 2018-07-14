@@ -16,7 +16,7 @@
   <!-- NavBar -->
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <i class="fas fa-crosshairs mr-1"></i>CuttCode
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target=".collapse">
@@ -45,16 +45,12 @@
         <div class="input-group">
           <input id="code-link" class="form-control" type="text" placeholder="Link to code snippet" />
           <div class="input-group-append d-none d-sm-block">
-            <!-- data-toggle="modal" data-target="#exampleModal" -->
-            <button id="get-started" class="btn btn-outline-dark">
-              Get Started
-            </button>
+            <button id="get-started" class="btn btn-outline-dark get-started">Get Started</button>
           </div>
         </div>
-        <!-- Mobile Button NOTE: just write media queries instead -->
+        <!-- Mobile Button -->
         <div class="input-group d-sm-none mt-4">
-          <!-- data-toggle="modal" data-target="#exampleModal" -->
-          <button class="form-control btn btn-dark">Get Started</button>
+          <button class="btn btn-dark form-control get-started">Get Started</button>
         </div>
       </div>
 
@@ -87,8 +83,9 @@
           <button class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>Success! Your code has been downloaded to our database.</p>
+          <p>Success! Your code has been added to our database.</p>
 
+          <!-- View Code Buttons -->
           <div class="input-group mb-4">
             <a id="view-css" class="btn btn-dark btn-sm mr-2" href="" target="_blank">View CSS</a>
             <a id="view-javascript" class="btn btn-dark btn-sm" href="" target="_blank">View JavaScript</a>
@@ -103,7 +100,6 @@
               </code>
             </figure>
           </div>
-
           <div id="javascript-instructions">
             <p class="mb-0">Add this to your body element for JavaScript:</p>
             <figure>

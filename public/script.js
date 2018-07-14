@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-  $('#get-started').on('click', function() {
+  $('.get-started').on('click', function() {
     const originalText = $(this).text().trim();
     $(this).text('Loading...')
 
@@ -23,8 +23,6 @@ $(document).ready(() => {
     })
 
     $.get(`/${name}.js`, (data, err) => {
-      console.log(data)
-      console.log(err)
       $('.code-name').text(name)
       $('#view-javascript').attr('href', `/${name}.js`);
       $('#view-javascript').show()
