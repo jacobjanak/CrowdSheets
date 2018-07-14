@@ -13,6 +13,7 @@ app.use(express.static('public'));
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/CrowdSheets');
 
 // routing
+app.use(require('./routes/home'))
 app.use(require('./routes/api'))
 
 // start server

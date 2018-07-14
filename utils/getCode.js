@@ -26,9 +26,8 @@ function getCode(name, language) {
           const parent = language === 'css' ? '#box-css' : '#box-js';
           const code = $(`${parent} code`).text().trim();
 
+          // if it's not JS then convert SASS to CSS
           if (language === 'css') {
-
-            // convert SASS to CSS
             sass.render({
               data: code
             }, (err, compiled) => {
